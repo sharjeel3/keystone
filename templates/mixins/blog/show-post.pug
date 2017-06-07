@@ -1,0 +1,10 @@
+mixin showPost(post)
+    .content__post
+        .content__copy
+            if post.image.exists
+                a(href='/blog/post/' + post.slug).image__link
+                    .post__image(style="background-image: url('" + post.image.secure_url + "')")
+            .post__copy
+                h2: a(href='/blog/post/' + post.slug)= post.title
+                p!= post.content.brief
+                p.read-more: a(href='/blog/post/' + post.slug).btn.btn-default Continue Reading

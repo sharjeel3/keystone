@@ -1,0 +1,28 @@
+mixin sidebar()
+    .sidebar
+        .signup__aside
+            h2.title Get Exclusive Fitness Tips
+            .description
+                p Learn how to gain maximum fitness with exclusive tips that we only share with our newsletter subscribers
+            .form__errors
+            .form__container
+                form(method="post", action="/newsletter/signup").signup__form--aside
+                    input(type="hidden", name="action", value="emailsignup")
+                    input(type="hidden", name="name.full", value="")
+                    input(type="email", name="email", required, autocomplete="email", placeholder="Enter your email address").input__text
+                    input(type="submit", value="Sign Up").input__submit
+        .posts__aside
+            //-if data.posts && data.posts.length
+                //-h2 Related Posts
+                //-ul.related__posts
+                    //-each myPost in data.posts
+                        //-li
+                            //-svg.icon.icon-checkmark
+                                //-use(xlink:href="/svg/symbol-defs.svg#icon-checkmark")
+                            //-a(href='/blog/post/'+myPost.slug)= myPost.title
+            h2 Popular Posts
+            if data.topPosts && data.topPosts.length
+                ul.top__posts
+                    each myPost in data.topPosts
+                        li
+                            a(href='/blog/post/' + myPost.slug)= myPost.title
